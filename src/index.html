@@ -22,6 +22,12 @@
     <div id="map"></div>
     <script>
 
+      //data
+      let data = `[{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9186866666667,27.240195]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9180466666667,27.2406516666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9181116666667,27.2405783333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9181516666667,27.240575]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9181766666667,27.24054]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.91806,27.2406266666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9187366666667,27.2401033333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9188,27.2400433333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9188,27.240025]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9187916666667,27.240025]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9187,27.24021]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9187,27.2401916666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.91871,27.24013]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9187283333333,27.2401233333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9183266666667,27.2404633333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9183816666667,27.2404633333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9183916666667,27.2403733333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9184433333333,27.240375]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.91844,27.2403266666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9184883333333,27.2402833333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9185266666667,27.2402833333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9185683333333,27.24027]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9185666666667,27.2402733333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9186566666667,27.240235]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9222266666667,27.2417916666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9220433333333,27.2419966666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9221083333333,27.2419766666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9221466666667,27.2420833333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9221533333333,27.2421383333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9221266666667,27.2421616666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9220583333333,27.24219]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9066366666667,27.219385]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.906655,27.2193333333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.906655,27.2193183333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.906735,27.2193616666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9063366666667,27.2194266666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.90632,27.2193916666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9066433333333,27.2195283333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9067433333333,27.2194416666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.90673,27.2194416666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9067566666667,27.2193483333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9067433333333,27.219395]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.906695,27.2194433333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.90667,27.2194183333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9064533333333,27.2192933333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9064866666667,27.2192916666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9067533333333,27.21941]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.90663,27.2194116666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9066433333333,27.2193766666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9066616666667,27.2194016666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.906695,27.2194133333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.906715,27.2194266666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9063266666667,27.2193116666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.906305,27.2193]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9063216666667,27.2192283333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9063416666667,27.2192866666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.90639,27.2193]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9064166666667,27.219275]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.90645,27.219305]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9063383333333,27.2194233333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.90634,27.2193566666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9063466666667,27.2193533333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9066366666667,27.219365]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9066116666667,27.2195383333333]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9067333333333,27.2194366666667]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9182216666667,27.240535]},"count":1,"centrioid":1},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9187016666667,27.24008]},"count":1,"centrioid":1}]`;
+    console.log("data raw string:", data);
+    const dataJson = JSON.parse(data);
+    console.log("data json:", dataJson);
+
       function initMap() {
 
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -45,36 +51,34 @@
 
         // Add a marker clusterer to manage the markers.
         var markerCluster = new MarkerClusterer(map, markers,
-            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+            {
+              imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+              minimumClusterSize: 100000,
+            });
+
+        //adjust the map to fit the markers' bounds
+        const bounds = new google.maps.LatLngBounds();
+        console.log("bounds:", bounds);
+        for(let marker of markers){
+          console.assert(marker.getPosition(), 'get position');
+          bounds.extend(marker.getPosition());
+        }
+        console.log("bounds:", bounds);
+        //move the map
+        map.fitBounds(bounds);
+
       }
-      var locations = [
-        {lat: -31.563910, lng: 147.154312},
-        {lat: -33.718234, lng: 150.363181},
-        {lat: -33.727111, lng: 150.371124},
-        {lat: -33.848588, lng: 151.209834},
-        {lat: -33.851702, lng: 151.216968},
-        {lat: -34.671264, lng: 150.863657},
-        {lat: -35.304724, lng: 148.662905},
-        {lat: -36.817685, lng: 175.699196},
-        {lat: -36.828611, lng: 175.790222},
-        {lat: -37.750000, lng: 145.116667},
-        {lat: -37.759859, lng: 145.128708},
-        {lat: -37.765015, lng: 145.133858},
-        {lat: -37.770104, lng: 145.143299},
-        {lat: -37.773700, lng: 145.145187},
-        {lat: -37.774785, lng: 145.137978},
-        {lat: -37.819616, lng: 144.968119},
-        {lat: -38.330766, lng: 144.695692},
-        {lat: -39.927193, lng: 175.053218},
-        {lat: -41.330162, lng: 174.865694},
-        {lat: -42.734358, lng: 147.439506},
-        {lat: -42.734358, lng: 147.501315},
-        {lat: -42.735258, lng: 147.438000},
-        {lat: -43.999792, lng: 170.463352}
-      ]
+      var locations = dataJson.map(d => ({
+        lat: d.centroid.coordinates[1],
+        lng: d.centroid.coordinates[0],
+      }));
+      console.log("location:", locations);
     </script>
     <!-- Replace following script src -->
+    <!--
     <script src="/maps/documentation/javascript/examples/markerclusterer/markerclustererplus@4.0.1.min.js">
+      -->
+    <script src="./markerclustererplus.min.js">
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1QIeijbBWmCv3wjjo2TbVr4MJbCS4vmA&callback=initMap">
