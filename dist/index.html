@@ -143,22 +143,45 @@
         map.setZoom(zoomFinal);
 
         //load
+        const currentZoom = map.getZoom();
+        chai.expect(currentZoom).above(0);
+        const clusterRadius = getClusterRadius(currentZoom);
+        chai.expect(clusterRadius).above(0);
+        console.log("currentZoom:", currentZoom);
+        const url = `https://www.treetracker.org/api/web/trees?clusterRadius=${clusterRadius}&zoom_level=${currentZoom}&userid=1445`
+        console.log("url:", url);
+        fetch(url, {mode: 'cors'})
+          .then(r => {
+            console.log("r:", r);
+            return r.json()
+          })
+          .then(data => {
+            console.log("loaded data:", data);
+          });
 
         //markers
         var markers = locations2.map(function(location, i) {
           chai.expect(location).property("label").a("number");
-          return new google.maps.Marker({
+          const marker = new google.maps.Marker({
             position: location.coordinate,
             label: location.label+"",
+            map: map,
+          });
+          google.maps.event.addListener(marker, "click", function() {
+            //fetchMarkers = false;
+            var zoomLevel = map.getZoom();
+            map.setZoom(zoomLevel + 2);
+            map.panTo(marker.position);
+            
           });
         });
 
-        // Add a marker clusterer to manage the markers.
-        var markerCluster = new MarkerClusterer(map, markers,
-            {
-              imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
-              minimumClusterSize: 9999990,
-            });
+//        // Add a marker clusterer to manage the markers.
+//        var markerCluster = new MarkerClusterer(map, markers,
+//            {
+//              imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+//              minimumClusterSize: 9999990,
+//            });
       }
       setTimeout(() => {
         go();
