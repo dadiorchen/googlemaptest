@@ -7,8 +7,52 @@ var data = `[{"type":"cluster","centroid":{"type":"Point","coordinates":[75.9186
 const data2 =
   '[{"type":"cluster","centroid":{"type":"Point","coordinates":[75.919265959596,27.2406763131313]},"count":33},{"type":"cluster","centroid":{"type":"Point","coordinates":[75.906556372549,27.2193746568627]},"count":34}]';
 
+function getClusterRadius(zoom) {
+  switch (zoom) {
+    case 1:
+      return 10;
+    case 2:
+      return 8;
+    case 3:
+      return 6;
+    case 4:
+      return 4;
+    case 5:
+      return 0.8;
+    case 6:
+      return 0.75;
+    case 7:
+      return 0.3;
+    case 8:
+      return 0.099;
+    case 9:
+      return 0.095;
+    case 10:
+      return 0.05;
+    case 11:
+      return 0.03;
+    case 12:
+      return 0.02;
+    case 13:
+      return 0.008;
+    case 14:
+      return 0.005;
+    case 15:
+      return 0.004;
+    case 16:
+      return 0.003;
+    case 17:
+    case 18:
+    case 19:
+      return 0.0;
+    default:
+      return 0;
+  }
+}
+
 window.data = data;
 window.data2 = data2;
+window.getClusterRadius = getClusterRadius;
 //module.exports = {
 //  data,
 //};

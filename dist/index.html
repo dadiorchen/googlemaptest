@@ -138,9 +138,11 @@
           console.log("zoom2:", zoom2);
         }
         console.log("height:", height, "width:", width);
-        const zoomFinal = Math.min(zoom, zoom2);
+        const zoomFinal = Math.min(zoom, zoom2) - 1/* to give some padding*/;
         console.log("zoom final:", zoomFinal);
-        map.setZoom(zoomFinal - 1 /* to give some padding*/);
+        map.setZoom(zoomFinal);
+
+        //load
 
         //markers
         var markers = locations2.map(function(location, i) {
