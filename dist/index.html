@@ -38,9 +38,9 @@
       const height = mapElement.clientHeight;
 
       //data
-//    console.log("data raw string:", data);
-//    const dataJson = JSON.parse(data);
-//    console.log("data json:", dataJson);
+    console.log("data raw string:", data);
+    const dataJson = JSON.parse(data);
+    console.log("data json:", dataJson);
 
       var map;
       // Create an array of alphabetical characters used to label the markers.
@@ -56,19 +56,19 @@
 
 
       }
-//      var locations = dataJson.map(d => ({
-//        lat: d.centroid.coordinates[1],
-//        lng: d.centroid.coordinates[0],
-//      }));
-//      console.log("location:", locations);
-//
-//      var locations2 = JSON.parse(data2).map(d => ({
-//        coordinate: {
-//          lat: d.centroid.coordinates[1],
-//          lng: d.centroid.coordinates[0],
-//        },
-//        label: d.count,
-//      }));
+      var locations = dataJson.map(d => ({
+        lat: d.centroid.coordinates[1],
+        lng: d.centroid.coordinates[0],
+      }));
+      console.log("location:", locations);
+
+      var locations2 = JSON.parse(data2).map(d => ({
+        coordinate: {
+          lat: d.centroid.coordinates[1],
+          lng: d.centroid.coordinates[0],
+        },
+        label: d.count,
+      }));
       //console.log("location2:", locations2);
 
       function go(){
@@ -90,7 +90,7 @@
 //              minimumClusterSize: 9999990,
 //            });
         //beijing: 39.914324, 116.397761
-        const locations = [{lat:0, lng:-180}];
+        //const locations = [{lat:0, lng:-180}];
 
         const initialBounds = getInitialBounds(
           locations,
