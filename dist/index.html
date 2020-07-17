@@ -38,9 +38,9 @@
       const height = mapElement.clientHeight;
 
       //data
-    console.log("data raw string:", data);
-    const dataJson = JSON.parse(data);
-    console.log("data json:", dataJson);
+//    console.log("data raw string:", data);
+//    const dataJson = JSON.parse(data);
+//    console.log("data json:", dataJson);
 
       var map;
       // Create an array of alphabetical characters used to label the markers.
@@ -56,20 +56,20 @@
 
 
       }
-      var locations = dataJson.map(d => ({
-        lat: d.centroid.coordinates[1],
-        lng: d.centroid.coordinates[0],
-      }));
-      console.log("location:", locations);
-
-      var locations2 = JSON.parse(data2).map(d => ({
-        coordinate: {
-          lat: d.centroid.coordinates[1],
-          lng: d.centroid.coordinates[0],
-        },
-        label: d.count,
-      }));
-      console.log("location2:", locations2);
+//      var locations = dataJson.map(d => ({
+//        lat: d.centroid.coordinates[1],
+//        lng: d.centroid.coordinates[0],
+//      }));
+//      console.log("location:", locations);
+//
+//      var locations2 = JSON.parse(data2).map(d => ({
+//        coordinate: {
+//          lat: d.centroid.coordinates[1],
+//          lng: d.centroid.coordinates[0],
+//        },
+//        label: d.count,
+//      }));
+      //console.log("location2:", locations2);
 
       function go(){
 //        // Add some markers to the map.
@@ -89,58 +89,18 @@
 //              imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
 //              minimumClusterSize: 9999990,
 //            });
+        //beijing: 39.914324, 116.397761
+        const locations = [{lat:0, lng:-180}];
 
-        //adjust the map to fit the markers' bounds
-        const bounds = new google.maps.LatLngBounds();
-        console.log("bounds:", bounds);
-//        for(let marker of markers){
-//          console.assert(marker.getPosition(), 'get position');
-//          bounds.extend(marker.getPosition());
-//        }
-        for(let location of locations){
-          chai.expect(location).property("lat").a("number"); 
-          chai.expect(location).property("lng").a("number"); 
-          bounds.extend(location);
-        }
-        console.log("bounds:", bounds);
-        //move the map
-        //map.fitBounds(bounds);
-        chai.assert(bounds);
-        console.log("center", bounds.getCenter());
-        console.log("bounds", bounds.toJSON());
-        map.panTo(bounds.getCenter());
-        //cal zoom
-        let zoom;
-        {
-          var GLOBE_WIDTH = 256; // a constant in Google's map projection
-          var west = bounds.getSouthWest().lng();
-          var east = bounds.getNorthEast().lng();
-          var angle = east - west;
-          if (angle < 0) {
-            angle += 360;
-          }
-          zoom = Math.round(Math.log(width * 360 / angle / GLOBE_WIDTH) / Math.LN2);
-          console.log("zoom1:", zoom);
-        }
-        let zoom2;
-        {
-          var GLOBE_WIDTH = 256; // a constant in Google's map projection
-          var south = bounds.getSouthWest().lat();
-          var north = bounds.getNorthEast().lat();
-          var angle = north - south;
-          console.log("angle:", angle);
-//          if (angle < 0) {
-//            angle += 360;
-//          }
-          angle = Math.abs(angle);
-          console.log("angle:", angle);
-          zoom2 = Math.round(Math.log(height * 360 / angle / GLOBE_WIDTH) / Math.LN2);
-          console.log("zoom2:", zoom2);
-        }
-        console.log("height:", height, "width:", width);
-        const zoomFinal = Math.min(zoom, zoom2) - 1/* to give some padding*/;
-        console.log("zoom final:", zoomFinal);
-        map.setZoom(zoomFinal);
+        const initialBounds = getInitialBounds(
+          locations,
+          width,
+          height
+        );
+        chai.expect(initialBounds).property("center").property("lat").a("number");
+        map.panTo(initialBounds.center);
+        chai.expect(initialBounds).property("zoomLevel").a("number");
+        map.setZoom(initialBounds.zoomLevel);
 
         //load
         const currentZoom = map.getZoom();
